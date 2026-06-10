@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(34, 211, 238, 0.16), transparent 30%),
+    radial-gradient(circle at 78% 20%, rgba(236, 72, 153, 0.13), transparent 28%),
+    radial-gradient(circle at 50% 85%, rgba(139, 92, 246, 0.16), transparent 34%),
+    #070b1d;
+  color: #f8fafc;
+  font-family: Pretendard, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 78%, transparent);
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  content: "";
+  background-image: linear-gradient(115deg, rgba(8, 13, 36, 0.94), rgba(18, 17, 54, 0.9)),
+    url("/assets/bg.png");
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.34;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .glass-card {
+    @apply border border-white/10 bg-white/[0.055] shadow-2xl shadow-black/30 backdrop-blur-xl;
+  }
+
+  .neon-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold transition duration-300;
+  }
+
+  .neon-button-primary {
+    @apply neon-button bg-gradient-to-r from-cyanGlow via-royal to-violetGlow text-white shadow-neon hover:-translate-y-0.5 hover:shadow-[0_0_34px_rgba(34,211,238,0.5)];
+  }
+
+  .neon-button-ghost {
+    @apply neon-button border border-white/15 bg-white/5 text-slate-100 hover:-translate-y-0.5 hover:border-cyanGlow/70 hover:bg-cyanGlow/10 hover:text-white hover:shadow-neon;
+  }
+
+  .section-kicker {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border border-cyanGlow/30 bg-cyanGlow/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.24em] text-cyanGlow;
+  }
+
+  .section-title {
+    @apply text-3xl font-black tracking-normal text-white sm:text-4xl lg:text-5xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
